@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 // Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__ . '/vendor/autoload.php';
@@ -36,7 +36,8 @@ foreach ($events as $event) {
     error_log('Non text message has come');
     continue;
   }
-  
+}
+
 // 位置情報を返信。引数はLINEBot、返信先、タイトル、住所、
 // 緯度、経度
 function replyLocationMessage($bot, $replyToken, $title, $address, $lat, $lon) {
