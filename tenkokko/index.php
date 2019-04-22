@@ -8,7 +8,7 @@ $httpClient = new\LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv
                             ('CHANNEL_ACCESS_TOKEN'));
 
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
-$bot = new\LINE\LINEBot($httpClient, ['channelSecret' => getnv(
+$bot = new\LINE\LINEBot($httpClient, ['channelSecret' => getenv(
                             'CHANNEL_SECRET')]);
 
 // LINE Messaging APIがリクエストに付与した著名を取得
