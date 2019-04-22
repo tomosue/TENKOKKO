@@ -15,7 +15,7 @@ $signature = $_SERVER['HTTP_' . ¥LINE¥LINEBot¥Constant¥HTTPHeader::LINE_SIGN
 //著名が正しいかチェック。正しければリクエストをパースし配列へ                            
 $events = $bot->parseEventRequest(file_get_contents('php://input'),$signature);
 
-            
+//ループ            
 foreach ($events as $event){
     //テキストを返信
     $bot->replyText($event->getReplyToken(), 'TextMessage');
