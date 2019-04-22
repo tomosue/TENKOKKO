@@ -36,10 +36,7 @@ foreach ($events as $event) {
     error_log('Non text message has come');
     continue;
   }
-  // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
-}
-
+  
 // 位置情報を返信。引数はLINEBot、返信先、タイトル、住所、
 // 緯度、経度
 function replyLocationMessage($bot, $replyToken, $title, $address, $lat, $lon) {
