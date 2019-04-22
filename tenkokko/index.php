@@ -3,8 +3,26 @@
 // Composerでインストールしたライブラリを一括読み込み
 require_once __DIR__ . '/vendor/autoload.php';
 
-//POSTメソッドで渡される値を取得、表示
-$inputString = file_get_contents('php://input');
-error_log($inputString);
+// アクセストークンを使いCurlHTTPClientをインスタンス化
+$httpClient = new\LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv
+                            ('CHANNEL_ACCESS_TOKEN'));
+
+// CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
+$bot = new\LINE\LINEBot($httpClient, ['channelSecret' => getnv(
+                            'CHANNEL_SECRET')]);
+
+// LINE Messaging APIがリクエストに付与した著名を取得
+$signature = $_SERVER['HTTP_' . \LINE\LINEBot\Constant\HTTPHeader
+                            ::LINE_SIGNATURE];
+
+//著名が正しいかチェック。正しければリクエストをパースし配列へ                            
+$events = $bot->parseEventRequest(file_get_contents('php://input'),
+                            $signature);
+
+            
+foreach ($events as $event){
+    //テキストを返信
+    $bot->replyText($event->getReplyToken(), 'TextMessage');
+}
 
 ?>
