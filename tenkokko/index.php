@@ -97,7 +97,7 @@ foreach ($events as $event) {
       // 以降の処理はスキップ
       continue;
     }
-    replyTextMessage($bot, $event->getReplyToken(), $location . 'の住所IDは' . $location  . "です。");
+    replyTextMessage($bot, $event->getReplyToken(), $location . 'の住所IDは' . $locationId  . "です。");
 
 
 }
